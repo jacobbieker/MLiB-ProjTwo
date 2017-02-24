@@ -1,0 +1,29 @@
+This project involves computing (1) the likelihood of a hidden Markov model when you have both the observables and the hidden state sequence available, and (2) the Viterbi and posterior decodings using a hidden Markov model when you have only the sequence of observables available. In the lectures we have covered how to compute the Viterbi-decoding (computing the ω-tabel and backtracking) and the Posterior-decoding (computing the α- and β-tables using the forward- and backward-algorithm).
+
+You must implement two or three programs:
+
+MANDATORY: A program (log-joint-prob) that can 1) read in the parameters of a hidden Markov models, a sequence of observables, and a sequence of hidden states, and 2) output the log joint probability of the sequence of observables and the sequence of hidden states under the given hidden Markov model.
+MANDATORY: A program (viterbi-decoding) that can 1) read in the parameters of a hidden Markov models and a sequence of observables, and 2) output the Viterbi-decoding of the sequence of observables and its log-likelihood.
+OPTIONAL: A program (posterior-decoding) that can 1) read in the parameters of a hidden Markov models and a sequence of observables, and 2) output the posterior-decoding of the sequence of observables and its log-likelihood (which can be compute as the log joint probability of the sequence of observables and the sequence of hidden states found by the decoding using your log-joint-prob program, note that this loglikelihood might be '-infinity' in case the posterior decoding does not correspond to a legal path in the hidden Markov model).
+All programs should be implemented such that underflow problems are avoided (i.e. use log transform and/or scaling).
+
+You get a hidden Markov model in a simple text format:
+
+hmm-tm.txt
+It consists of a list of records with blank lines in between. The first line in each record is the name of the record and the order is 'hidden states', 'observable states', 'initial probabilities', 'transition probabilities', and 'emission probabilities'. The order of the hidden and observable states determins how the vectors and matrices are ordered.
+
+To test your programs viterbi-decoding (mandatory) and posterior-decoding (optional), you get the following test data in a simple text format (usually referred to as Fasta-format):
+
+test-sequences-project2.txt
+The format is a sequence of data sets. The first line in a data set is the name of the data set, the second line (when spaces are removed) is the observable sequence. There is a blank line between each data set.
+
+Your programs should iterate through the input data sets and output the Viterbi or posterier decoding and its log-joint probability for each. The output on the test data above should be:
+
+test-sequences-project2-viterbi-output.txt
+test-sequences-project2-posterior-output.txt
+To test your implementation of log-joint-prob, you can use your program to compute the log-likehoods of the pairs of sequence of observables and sequence of hidden states in the above two files (test-sequences-project2-viterbi-output.txt and test-sequences-project2-posterior-output.txt), and verify that you agree with the log-likelihoods reported in the files.
+
+You must handin a single zip-file via Blackboard before Friday, Feb 24, 12:00 that contains:
+
+A short report (1 page in pdf) that explains the status of your work, how you have validated the correctness of your programs, and a link to your source code. Remember to write your names and group name on the report.
+The results of using your programs viterbi-decoding and posterior-decoding for Viterbi and Posterior decoding on the data in sequences-project2.txt. Fill out and handin the files sequences-project2-viterbi-output.txt and sequences-project2-posterior-output.txt with the output as specified in the files.
